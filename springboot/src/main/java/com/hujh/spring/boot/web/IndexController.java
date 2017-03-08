@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 	@Autowired 
-	private MessageSource messageSource;
+	private MessageSource messageSource;  // 国际化
 	
 	@RequestMapping("/")
     public String index(ModelMap map) {
         // 加入一个属性，用来在模板中读取
         map.addAttribute("host", "http://blog.didispace.com");
         map.addAttribute("msg", "中文");
+        // 国际化
         String welcome = messageSource.getMessage("home.welcome", null, LocaleContextHolder.getLocale());
+       //RequestContextUtils.getLocale(request)
         map.addAttribute("welcome", welcome);
-        //RequestContextUtils.getLocale(request)
-        // return模板文件的名称，对应src/main/resources/templates/index.html
         return "index";  
     }
 	
