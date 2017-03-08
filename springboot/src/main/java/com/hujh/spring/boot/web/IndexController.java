@@ -1,5 +1,7 @@
 package com.hujh.spring.boot.web;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.hujh.spring.boot.entity.User;
 
 @Controller
 public class IndexController {
@@ -39,5 +43,13 @@ public class IndexController {
         log.error("error level log");  
         return "Hello world from Spring Boot!";  
     }  
+	
+	
+	@RequestMapping("/entity")
+	@ResponseBody
+    public User entity() {  
+		return new User(1, "name", new Date(), "remark");
+    }  
+	
 	
 }

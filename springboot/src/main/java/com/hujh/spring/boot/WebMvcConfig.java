@@ -1,7 +1,5 @@
 package com.hujh.spring.boot;
 
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -32,7 +30,22 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		// 可增加拦截器
 		super.addInterceptors(registry);
 	}
-	
+
+	/** 用fastjson做为json解析器 第一种方式
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		super.configureMessageConverters(converters);
+		// 定义一个conver 转换消息的对象
+		// 添加fastjson配置信息，如：是否要格式化返回的json
+		// 在convert中添加配置信息
+		// 将convert添加到converters中
+		FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+		FastJsonConfig fastJsonConfig = new FastJsonConfig();
+		fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
+		fastConverter.setFastJsonConfig(fastJsonConfig);
+		converters.add(fastConverter);	
+	}
+	**/
 	
 	
 }
