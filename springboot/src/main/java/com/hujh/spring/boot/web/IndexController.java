@@ -48,8 +48,13 @@ public class IndexController {
 	@RequestMapping("/entity")
 	@ResponseBody
     public User entity() {  
-		return new User(1, "name", new Date(), "remark");
+		return new User(1, "name2", new Date(), "remark");
     }  
-	
+
+	@RequestMapping("/hot")
+	@ResponseBody
+    public User hot() {  
+		return new User(1, "name3", new Date(), "remark");
+    } 
 	
 }
