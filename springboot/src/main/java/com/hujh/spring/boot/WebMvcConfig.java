@@ -2,6 +2,8 @@ package com.hujh.spring.boot;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
@@ -31,6 +33,22 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		super.addInterceptors(registry);
 	}
 
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		// TODO Auto-generated method stub
+		super.addResourceHandlers(registry);
+	}
+
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		// TODO Auto-generated method stub
+		super.addViewControllers(registry);
+		registry.addViewController("/xx").setViewName("xx");
+		registry.addViewController("/ws").setViewName("/ws");
+	    registry.addViewController("/login").setViewName("/login");
+	    registry.addViewController("/chat").setViewName("/chat");
+	}
+
 	/** 用fastjson做为json解析器 第一种方式
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
@@ -47,5 +65,25 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 	**/
 	
+	// 注册servlet
+//	@Bean
+//	public ServletRegistrationBean servletRegistrationBean(){
+//		return new ServletRegistrationBean(new XxServlet(), "/xx/");
+//	}
+	
+	// 注册Filter
+//	@Bean
+//	public FilterRegistrationBean filterRegistrationBean() {
+//		FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+//		registrationBean.setFilter(new YyFilter());
+//		registrationBean.setOrder(2);
+//		return registrationBean;
+//	}
+	
+	// 注册Listener
+//	@Bean
+//	public ServletListenerRegistrationBean<ZzListener> zzListenerServletRegistrationBean(){
+//		return new ServletListenerRegistrationBean<ZzListener>(new ZzListener());
+//	}
 	
 }
