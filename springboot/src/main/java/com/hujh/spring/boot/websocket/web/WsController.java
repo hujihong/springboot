@@ -14,6 +14,10 @@ import com.hujh.spring.boot.websocket.domain.WiselyResponse;
 @Controller
 public class WsController {
 
+	//
+	// (1)@MessageMapping和@RequestMapping功能类似，用于设置URL映射地址，浏览器向服务器发起请求，需要通过该地址。
+	// (2)如果服务器接受到了消息，就会对订阅了@SendTo括号中的地址传送消息。
+	
 	@MessageMapping("/welcome")
 	@SendTo("/topic/getResponse")
 	public WiselyResponse say(WiselyMessage message) throws Exception {

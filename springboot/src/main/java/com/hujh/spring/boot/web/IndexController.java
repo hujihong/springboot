@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -78,6 +79,14 @@ public class IndexController {
 		model.addAttribute("people", people);
 		
 		return "index7";
+	}
+	
+	@RequestMapping(value="/search",produces={MediaType.APPLICATION_JSON_VALUE})
+	@ResponseBody
+	public Person search(String personName){
+		Person p = new Person(personName, 32);
+		p.setAddress("hefei");
+		return p;
 	}
 	
 	
