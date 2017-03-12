@@ -1,12 +1,17 @@
 package com.hujh.spring.boot;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import com.hujh.spring.boot.jpa.support.CustomRepositoryFactoryBean;
+
 @Configuration
+@EnableJpaRepositories(repositoryFactoryBeanClass=CustomRepositoryFactoryBean.class)
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	
