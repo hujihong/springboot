@@ -112,11 +112,11 @@ public class DataController {
 		return pagePeople;
 	}
 	
-	@RequestMapping("/auto")
-	public Page<Person> auto(Person person){
-		Page<Person> pagePeople = personRepository.findByAuto(person, new PageRequest(0, 10));
-		return pagePeople;
-	}
+//	@RequestMapping("/auto")
+//	public Page<Person> auto(Person person){
+//		Page<Person> pagePeople = personRepository.findByAuto(person, new PageRequest(0, 10));
+//		return pagePeople;
+//	}
 	
 	
 
